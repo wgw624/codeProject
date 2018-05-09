@@ -10,7 +10,7 @@
         str_data = str_resize + '-special-event',
         str_delay = 'delay',
         str_throttle = 'throttleWindow';
-    jq_resize[str_delay] = 250;
+    jq_resize[str_delay] = 200;
     jq_resize[str_throttle] = true;
     $.event.special[str_resize] = {
         setup: function() {
@@ -139,9 +139,13 @@
                 $(tablePar[0]).css("overflow","hidden");
                 $(tablePar[0]).css("position","relative");
                 fixTableH.bindScroll(fixTableH.options.fixBodyId+index,fixTableH.options.fixRowId+index,fixTableH.options.fixColId+index);
-            });
-            $(window).unbind().bind("resize",function(){
-                fixTableH.resizeTableHeadWidth(fixTableH);
+                var tableId = $(dom).attr('id');
+
+                $("#"+tableId).resize(function(){
+                    var headId = fixTableH.options.fixRowId+index;
+                    var tableW = $(this).width();
+                    $("#"+headId).css({'width':tableW});
+                });
             });
 
         },
@@ -184,7 +188,11 @@
                 $(tr).html(tdHtml);
                 fixColHtml = fixColHtml + $(tr)[0].outerHTML;
             });
-            var table = $("<table class='fixTableCol fixTableHeadTable'>"+fixColHtml+"</table>")
+            if($(dom).attr("cellspacing") == 0 && $(dom).attr("cellpadding") == 0){
+                var table = $("<table class='fixTableCol fixTableHeadTable' cellpadding='0' cellspacing='0'>"+fixColHtml+"</table>")
+            }else{
+                var table = $("<table class='fixTableCol fixTableHeadTable' >"+fixColHtml+"</table>")
+            }
             fixColTabDiv.html(table);
             return fixColTabDiv;
         },
@@ -217,8 +225,12 @@
             var fixHtml = fixHeadObj.fixHtml;
             var tablecls = $(dom).attr("class");
             var maxWidthTr = fixTableH.getMaxWidthTr(index,dom,fixTableH);
-           /* var tableHead = "<table  class = '"+tablecls+ " uu'>"+ fixHtml + maxWidthTr[0].outerHTML+"</table>"*/
-            var tableHead = $("<table></table>");
+           /* var tableHead = "<table  class = '"+tablecls+ " uu' >"+ fixHtml + maxWidthTr[0].outerHTML+"</table>"*/
+           if($(dom).attr("cellspacing") == 0 && $(dom).attr("cellpadding") == 0){
+               var tableHead = $("<table  cellpadding='0' cellspacing='0'></table>");
+           }else{
+               var tableHead = $("<table></table>");
+           }
             tableHead.addClass(tablecls);
             tableHead.addClass("tableHeadStyle");
             if(tableWidth){
@@ -291,8 +303,11 @@
                 var tdWB = -1;
                 var maxTdText = "";
                 for(var j =1;j<rowCount;j++){
-
-                    var tdObj = $($(dom).find("tr").eq(j)).find("td,th").eq(i);
+                    var trObj = $(dom).find("tr").eq(j)
+                    if($(trObj).find("td,th").length<1){
+                        continue;
+                    }
+                    var tdObj = $(trObj).find("td,th").eq(i);
 
                     var tdText = $(tdObj).html();
                     if(isFlag){
@@ -330,16 +345,6 @@
                 }
                 scrollLeft = left;
                 scrollTop = top;
-            });
-        },
-        resizeTableHeadWidth:function(fixTableH){
-            fixTableH.$element.each(function(index,dom){
-                var headId = fixTableH.options.fixRowId+index;
-                var tabId = $(dom).attr("id")
-                $("#"+tabId).resize(function(){
-                    var tableW = $(this).width();
-                    $("#"+headId).css({'width':tableW});
-                });
             });
         },
     };

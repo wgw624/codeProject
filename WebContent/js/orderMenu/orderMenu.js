@@ -204,6 +204,7 @@ OrderSys={
 		},
 		
 		sureEditOrder:function(){
+			debugger;
 			var orderId = $("#orderId").val();
 			var tableId=$("#tableId").val();
 			var menuStr = OrderSys.OrderManage.getCheckMenuStr();

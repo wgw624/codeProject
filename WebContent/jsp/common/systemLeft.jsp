@@ -7,6 +7,6 @@
             <li onclick="WareHoseManage.warHose.openMain()">仓库管理</li>
             <li onclick="CommonMange.leftMenu.expendMange()">会员管理</li>
             <li onclick="CommonMange.leftMenu.chargeMange()">费用管理</li>
-            <li onclick="CommonMange.leftMenu.chargeMange()">员工管理</li>
+            <li onclick="CommonMange.leftMenu.userManage()">用户管理</li>
        </ul>
  </div>

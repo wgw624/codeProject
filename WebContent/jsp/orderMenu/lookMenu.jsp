@@ -78,7 +78,7 @@
 				</span>
 				<i class="addIcon_big float_right mr_10" onclick="WareHoseManage.warHose.addProductType(2)"></i>
 			</div>
-			<div class="cal_H bor calChildMaxWidth mt_10" id="sucaiDiv">
+			<div class="cal_H over bor calChildMaxWidth mt_10" id="sucaiDiv">
 				<s:iterator id="li" value="listS" status="status">
 					<div class="table_row float_left icon_span line_H30">
 						<s:if test='#menuType == "0"'> 
@@ -112,7 +112,7 @@
 				<span>凉菜类</span>
 				<i class="addIcon_big float_right mr_10" onclick="WareHoseManage.warHose.addProductType(3)"></i>
 			</div>
-			<div class="cal_H_1 mt_10 over bor calChildMaxWidth" id="liangcaiDiv">
+			<div class="cal_H_1 over mt_10 over bor calChildMaxWidth" id="liangcaiDiv">
 					<s:iterator id="li" value="listL" status="status">
 						<div class="table_row float_left icon_span line_H30">
 							<s:if test='#menuType == "0"'> 

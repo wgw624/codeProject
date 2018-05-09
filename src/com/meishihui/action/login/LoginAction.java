@@ -27,7 +27,7 @@ import net.sf.json.JSONObject;
 @Controller(value="loginAction")
 @ParentPackage(value="myInterceptor")
 @Scope(value="prototype")
-@Namespace("/login")
+/*@Namespace("/login")*/
 public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	String result;
 	
@@ -103,7 +103,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		return "cancel";
 	}
 	
+	@Action(value="modifyPassword",results={@Result(name="fail",location="/jsp/systemFirstPage.jsp"),
+			@Result(name="success",location="/jsp/systemFirstPage.jsp")})
 	public String modifyPassword()throws Exception{
+		System.out.println("mimaxiugai");
 		User suser = (User) ActionContext.getContext().getSession().get("user");
 		String psd = user.getPassword();
 		suser.setPassword(psd);

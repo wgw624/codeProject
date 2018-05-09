@@ -30,7 +30,6 @@ import com.opensymphony.xwork2.ActionSupport;
 @Controller
 @Scope(value="prototype")
 @Namespace(value="/ordermenu")
-/*@ParentPackage(value="json-default")*/
 @ParentPackage(value="myInterceptor")
 @Results({@Result(name="newAddSuccess",location="/jsp/orderMenu/orderMenuMain.jsp")})
 public class OrderMenuAction  extends ActionSupport{
@@ -57,8 +56,7 @@ public class OrderMenuAction  extends ActionSupport{
 	
 	@Action(value="OrderMenuAction_lookMenu",results={@Result(name="lookMenu",location="/jsp/orderMenu/lookMenu.jsp")})
 	public String lookMenu() throws Exception{
-		System.out.println("lookMenu().....menu---");
-		
+	
 		Map<String,List<WareHose>> map = wareHoseService.getWareHoseClassify();	
 		List<TableNumber> listTab = orderService.getTableNumberForIsUse("0");
 		

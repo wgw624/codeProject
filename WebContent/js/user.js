@@ -29,7 +29,7 @@ User={
 				alert("新密码输入不一致")
 				return;
 			}
-			var url = rootPath+"/login/loginAction_modifyPassword";
+			var url = rootPath+"/login/modifyPassword";
 			var param = {
 					'newPsd':newPsd,
 					'password':oldPsd,
@@ -38,5 +38,16 @@ User={
 				PopWin.PopUp.close();
 			});
 		},
+	},
+	newAddUser:function(){
+		var url = rootPath+"/jsp/user/addUser_popup.jsp";
+		$.post(url,null,function(data){
+			var option = {
+					'title':'新增用户'
+			}
+			var win = new PopWin.PopUp.init(option);
+			win.setContent(data);
+			win.open();
+		});
 	}
 }

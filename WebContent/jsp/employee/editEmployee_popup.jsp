@@ -14,17 +14,22 @@
 			<tr>
 				<td>基本工资</td>
 				<td>
-				<input type="text"  id="baseSalary" value='<s:property value="#emp.baseSalary"/>'  onblur="JsUtil.input.onblurValidateNum('baseSalary','newAddEmployeeBtn')">
+					<input type="text"  id="baseSalary" value='<s:property value="#emp.baseSalary"/>'  onblur="JsUtil.input.onblurValidateNum('baseSalary','newAddEmployeeBtn')">
+					<span id="baseSalary_span" class="errorInf"></span>
 				</td>
 			</tr>
 			<tr>
 				<td>假期</td>
-				<td><input type="text"  id="holidays" value='<s:property value="#emp.holidays"/>'  onblur="JsUtil.input.onblurValidateNum('holidays','newAddEmployeeBtn')"></td>
+				<td>
+				<input type="text"  id="holidays" value='<s:property value="#emp.holidays"/>'  onblur="JsUtil.input.onblurValidateNum('holidays','newAddEmployeeBtn')">
+				<span id="holidays_span" class="errorInf"></span>
+				</td>
 			</tr>
 			<tr>
 				<td>全勤奖</td>
 				<td>
 				<input type="text" id="perfectAttendanceAward" value='<s:property value="#emp.perfectAttendanceAward"/>'   onblur="JsUtil.input.onblurValidateNum('perfectAttendanceAward','newAddEmployeeBtn')">
+				<span id="perfectAttendanceAward_span" class="errorInf"></span>
 				</td>
 			</tr>
 			<s:if test="#emp.isFixOverTimePay ==0 ">
@@ -37,6 +42,7 @@
 				<td>加班费<s:property value="#emp.isFixOverTimePay"/></td>
 				<td>
 					<input type="text" id="overtimePay" value='<s:property value="#emp.overtimePay"/>' onblur="JsUtil.input.onblurValidateNum('overtimePay','newAddEmployeeBtn')">
+					<span id="overtimePay_span" class="errorInf"></span>
 				</td>
 			</tr>
 			

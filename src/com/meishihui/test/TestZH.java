@@ -24,4 +24,9 @@ public class TestZH {
 
 		
 	}
+	@Test
+	public void testConvert(){
+		String str = "00340";
+		System.out.println(Integer.valueOf(str));
+	}
 }

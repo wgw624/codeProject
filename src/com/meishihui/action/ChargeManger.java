@@ -95,7 +95,6 @@ public class ChargeManger extends ActionSupport implements ModelDriven<Expensed>
 			}
 			ord.setTableId(tabMap.get(ord.getTableId()));
 		}
-	
 		ActionContext.getContext().get("request");			
 		ActionContext.getContext().put("listOrder", listOrder);
 		ActionContext.getContext().put("sumYSJE", sumYSJE);

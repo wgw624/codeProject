@@ -9,7 +9,7 @@
 		</div>
 		<div class="mt_10">
 			<span class="calBrotherMaxWidth titleInf">单价</span>
-			<input type="text" id="hoseDetailPrice"  value="${hoseDetail.purchasePrice}">
+			<input type="text" id="hoseDetailPrice"  value="${hoseDetail.purchasePrice}" readonly="readonly">
 		</div>
 		<div class="mt_10">
 			<span class="calBrotherMaxWidth titleInf">数量</span>
@@ -21,7 +21,8 @@
 		</div>
 		<div class="mt_10">
 			<span class="calBrotherMaxWidth titleInf">实付金额</span>
-			<input type="text" id="hoseDetailRelPayMoney"  value="${hoseDetail.shouldPaySumMoney}">
+			<input type="text" id="hoseDetailRelPayMoney"  value="${hoseDetail.shouldPaySumMoney}" onblur="JsUtil.input.onblurValidateNum('hoseDetailRelPayMoney','surePayMentBtn')" >
+			<span id="hoseDetailRelPayMoney_span" class="errorInf"></span>
 		</div>
 		<div class="mt_10">
 			<span class="calBrotherMaxWidth titleInf">备注</span>
@@ -33,6 +34,6 @@
 	</div>
 	
 	<div class="popup_bottom_div">
-		<input type="button" class="commonBtn" value="确定" onclick="WareHoseManage.wareHoseDetail.surePayment('<s:property value='#hoseDetail.id'/>')">
+		<input type="button" class="commonBtn" id="surePayMentBtn" value="确定" onclick="WareHoseManage.wareHoseDetail.surePayment('<s:property value='#hoseDetail.id'/>')">
 	</div>
 </div>

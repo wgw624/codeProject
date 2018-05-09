@@ -1,7 +1,6 @@
 package com.meishihui.service.imp;
 
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,8 +12,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.meishihui.dao.OrderDao;
@@ -105,6 +102,7 @@ public class OrderMenuServiceImp implements OrderMenuService{
 					order.getSetFoodMenu().add(bean);
 				}else{//验证是否为不显示的菜
 					OrderFoodMenu ofm = mapOid.get(newOid);
+					ofm.setCountMenu(Integer.valueOf(foodArr[1]));
 					if("0".equals(ofm.getIsShow())){
 						ofm.setIsShow("1");
 						ofm.setCountMenu(Integer.valueOf(foodArr[1]));

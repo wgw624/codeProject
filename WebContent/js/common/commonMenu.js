@@ -13,8 +13,13 @@ CommonMange={
 		orderManage:function(){//订单管理
 			var url=rootPath+"/sysMenu/SystemMenuAction_openOrderMenu";
 			var param = null;
-			console.log(rootPath+"/sysMenu/SystemMenuAction_openOrderMenu")
 			$.post(url,param,function(data){
+				$("#bodyContent").html(data);
+			});
+		},
+		userManage:function(){
+			var url=rootPath+"/sysMenu/queryUser";
+			$.post(url,null,function(data){
 				$("#bodyContent").html(data);
 			});
 		},
